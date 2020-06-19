@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Application</title>
+</head>
+<body>
+<div id = "entries"/>
+<h1>New Entries</h1>
+<form>
+    <label for="ReferenceType">ReferenceType</label>
+    <textbox id="referenceType"> </textbox>
+
+    <label for="Value_Factor">Value_Factor</label>
+    <textarea id="valueFactor"> </textarea>
+
+    <label for="Cover">Cover</label>
+    <textbox id="cover"> </textbox>
+
+    <label for="Category">Category</label>
+    <textbox id="category"> </textbox>
+
+    <label for="StatusR">StatusR</label>
+    <textbox id="statusR"> </textbox>
+
+    <label for="States">States</label>
+    <textbox id="states"> </textbox>
+
+    <label for="ProductType">ProductType</label>
+    <textbox id="productType"> </textbox>
+
+    <label for="BoatType">BoatType</label>
+    <textbox id="boatType"> </textbox>
+
+
+    <label for="BoatMaterial">BoatMaterial</label>
+    <textbox id="boatMaterial"> </textbox>
+ 
+    <label for="BoatLength">BoatLength</label>
+    <textbox id="boatLength"> </textbox>
+
+    <button id="Submit">Submit</button>
+
+    </form>
+
+<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+    var API_URL = 'https://q6esiayzfj.execute-api.ap-southeast-2.amazonaws.com/v1/';
+
+    $(document).ready(function(){
+        $.ajax({
+
+            type: 'POST',
+            url : API_URL,
+
+            success:function(data){
+
+                $('#entries').html('');
+                data.items.forEach(function(sampleItem){
+
+                    $('#entries').append('<p>' + sampleItem.message + '<p>');
+                    })
+
+
+            }
+
+            });
+
+        });
+
+
+
+</script>
+
+
+</body>
+</html>
