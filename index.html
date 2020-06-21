@@ -10,36 +10,36 @@
 
 <h1>New Entries</h1>
 <form>
-    <label for="referenceType">ReferenceType</label>
-    <input id ="referenceType">
+    <label for="ReferenceType">ReferenceType</label>
+    <input id ="ReferenceType"> </p>
 
-    <label for="valueFactor">Value_Factor</label>
-    <input id="valueFactor">
+    <label for="ValueFactor">Value_Factor</label>
+    <input id="ValueFactor"> </p>
 
-    <label for="cover">Cover</label>
-    <input id="cover">
+    <label for="Cover">Cover</label>
+    <input id="Cover"> </p>
 
-    <label for="category">Category</label>
-    <input id="category">
+    <label for="Category">Category</label>
+    <input id="Category"> </p>
 
-    <label for="statusR">StatusR</label>
-    <input id="statusR">
+    <label for="StatusR">StatusR</label>
+    <input id="StatusR"> </p>
 
-    <label for="states">States</label>
-    <input id="states">
+    <label for="States">States</label>
+    <input id="States"> </p>
 
-    <label for="productType">ProductType</label>
-    <input id="productType">
+    <label for="ProductType">ProductType</label>
+    <input id="ProductType"> </p>
 
-    <label for="boatType">BoatType</label>
-    <input id="boatType">
+    <label for="BoatType">BoatType</label>
+    <input id="BoatType">  </p>
 
 
-    <label for="boatMaterial">BoatMaterial</label>
-    <input id="boatMaterial">
+    <label for="BoatMaterial">BoatMaterial</label>
+    <input id="BoatMaterial">  </p>
 
-    <label for="boatLength">BoatLength</label>
-    <input id="boatLength">
+    <label for="BoatLength">BoatLength</label>
+    <input id="BoatLength">  </p>
 
     <button id="Submit">Submit</button>
 
@@ -53,16 +53,16 @@
     $(document).ready(function(){
         $.ajax({
 
-            type: 'POST',
+            type: 'GET',
             url : API_URL,
 
             success:function(data){
 
                 $('#entries').html('');
-                data.items.forEach(function(sampleItem){
+                data.items.forEach(function(Item){
 
-                    $('#entries').append('<p>' + sampleItem.referenceType + '<p>' + '<p>' + sampleItem.cover + '<p>' + '<p>' + sampleItem.category + '<p>' + '<p>' + sampleItem.valueFactor + '<p>' +
-                                '<p>' + sampleItem.statusR + '<p>' + '<p>' + sampleItem.states + '<p>');
+                    $('#entries').append('<p>' + Item.ReferenceType + '<p>' + '<p>' + Item.Cover + '<p>' + '<p>' + Item.Category + '<p>' + '<p>' + Item.ValueFactor + '<p>' +
+                                '<p>' + Item.StatusR + '<p>' + '<p>' + Item.sSates + '<p>');
                     })
 
 
@@ -77,12 +77,12 @@
         $.ajax({
             type: 'POST',
             url: API_URL,
-            data: JSON.stringify({"referenceType": $('#referenceType').val()},
-                    {"valueFactor": $('#valueFactor').val()}, {"cover": $('#cover').val()},
-                                    {"catrgory": $('#category').val()},{"statusR": $('#statusR').val()},
-                {"states": $('#states').val()},{"productType": $('#productType').val()},
-                {"boatType": $('#boatType').val()},{"boatMaterial": $('#boatMaterial').val()},
-                {"boatLength": $('#boatLength').val()}),
+            data: JSON.stringify({"ReferenceType": $('#ReferenceType').val()},
+                    {"Value_Factor": $('#Value_Factor').val()}, {"Cover": $('#Cover').val()},
+                                    {"Catrgory": $('#Category').val()},{"StatusR": $('#StatusR').val()},
+                {"States": $('#States').val()},{"ProductType": $('#ProductType').val()},
+                {"BoatType": $('#BoatType').val()},{"BoatMaterial": $('#BoatMaterial').val()},
+                {"BoatLength": $('#BoatLength').val()}),
             contentType: "application/json",
             success: function(data) {
                 location.reload();
