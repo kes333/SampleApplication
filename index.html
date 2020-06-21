@@ -59,10 +59,10 @@
             success:function(data){
 
                 $('#entries').html('');
-                data.items.forEach(function(Item){
+                data.items.forEach(function(item){
 
-                    $('#entries').append('<p>' + Item.ReferenceType + '<p>' + '<p>' + Item.Cover + '<p>' + '<p>' + Item.Category + '<p>' + '<p>' + Item.ValueFactor + '<p>' +
-                                '<p>' + Item.StatusR + '<p>' + '<p>' + Item.sSates + '<p>');
+                    $('#entries').append('<p>' + item.ReferenceType + '<p>' + '<p>' + item.Cover + '<p>' + '<p>' + item.Category + '<p>' + '<p>' + item.ValueFactor + '<p>' +
+                                '<p>' + item.StatusR + '<p>' + '<p>' + item.States + '<p>');
                     })
 
 
