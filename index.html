@@ -1,43 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Sample Application</title>
 </head>
 <body>
-<div id = "entries"/>
+<div id = "entries">
+</div>
+
 <h1>New Entries</h1>
 <form>
-    <label for="ReferenceType">ReferenceType</label>
-    <textbox id="referenceType"> </textbox>
+    <label for="referenceType">ReferenceType</label>
+    <input id ="referenceType">
 
-    <label for="Value_Factor">Value_Factor</label>
-    <textarea id="valueFactor"> </textarea>
+    <label for="valueFactor">Value_Factor</label>
+    <input id="valueFactor">
 
-    <label for="Cover">Cover</label>
-    <textbox id="cover"> </textbox>
+    <label for="cover">Cover</label>
+    <input id="cover">
 
-    <label for="Category">Category</label>
-    <textbox id="category"> </textbox>
+    <label for="category">Category</label>
+    <input id="category">
 
-    <label for="StatusR">StatusR</label>
-    <textbox id="statusR"> </textbox>
+    <label for="statusR">StatusR</label>
+    <input id="statusR">
 
-    <label for="States">States</label>
-    <textbox id="states"> </textbox>
+    <label for="states">States</label>
+    <input id="states">
 
-    <label for="ProductType">ProductType</label>
-    <textbox id="productType"> </textbox>
+    <label for="productType">ProductType</label>
+    <input id="productType">
 
-    <label for="BoatType">BoatType</label>
-    <textbox id="boatType"> </textbox>
+    <label for="boatType">BoatType</label>
+    <input id="boatType">
 
 
-    <label for="BoatMaterial">BoatMaterial</label>
-    <textbox id="boatMaterial"> </textbox>
+    <label for="boatMaterial">BoatMaterial</label>
+    <input id="boatMaterial">
 
-    <label for="BoatLength">BoatLength</label>
-    <textbox id="boatLength"> </textbox>
+    <label for="boatLength">BoatLength</label>
+    <input id="boatLength">
 
     <button id="Submit">Submit</button>
 
@@ -46,12 +48,12 @@
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
 
-    var API_URL = 'https://q6esiayzfj.execute-api.ap-southeast-2.amazonaws.com/v1/';
+    var API_URL = 'https://q6esiayzfj.execute-api.ap-southeast-2.amazonaws.com/v1/referencetype';
 
     $(document).ready(function(){
         $.ajax({
 
-            type: 'GET',
+            type: 'POST',
             url : API_URL,
 
             success:function(data){
@@ -59,7 +61,10 @@
                 $('#entries').html('');
                 data.items.forEach(function(sampleItem){
 
-                    $('#entries').append('<p>' + sampleItem.message + '<p>');
+                    $('#entries').append('<p>' + sampleItem.referenceType + '<p>' + <p>'
+                        + sampleItem.cover + '<p>' + <p>' + sampleItem.category + '<p>' +
+                            <p>' + sampleItem.valueFactor + '<p>' +
+                                <p>' + sampleItem.statusR + '<p>' + <p>' + sampleItem.states + '<p>');
                     })
 
 
@@ -74,7 +79,12 @@
         $.ajax({
             type: 'POST',
             url: API_URL,
-            data: JSON.stringify({"message": $('#msg').val()}),
+            data: JSON.stringify({"referenceType": $('#referenceType').val()},
+                    {"valueFactor": $('#valueFactor').val()}, {"cover": $('#cover').val()},
+                                    {"catrgory": $('#category').val()},{"statusR": $('#statusR').val()},
+                {"states": $('#states').val()},{"productType": $('#productType').val()},
+                {"boatType": $('#boatType').val()},{"boatMaterial": $('#boatMaterial').val()},
+                {"boatLength": $('#boatLength').val()}),
             contentType: "application/json",
             success: function(data) {
                 location.reload();
